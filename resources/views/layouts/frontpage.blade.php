@@ -29,7 +29,7 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Scripts -->
-    @vite(['resources/sass/main.sass', 'resources/js/public.js'])
+    @vite(['resources/sass/main.sass', 'resources/js/app.js'])
 </head>
 <body @scroll="setScrollToTop()" style="overflow-x: hidden">
 
