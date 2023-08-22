@@ -1,0 +1,173 @@
+.bar-block .dropdown-hover,
+.bar-block .dropdown-click
+    width: 100%
+
+
+.bar-block .dropdown-hover .dropdown-content,
+.bar-block .dropdown-click .dropdown-content
+    min-width: 100%
+
+
+.bar-block .dropdown-hover .button,
+.bar-block .dropdown-click .button
+    width: 100%
+    text-align: left
+    padding: 0.5em 1em
+
+
+.center .bar
+    display: inline-block
+    width: auto
+
+
+.bar
+    width: 100%
+
+    button.bar-item
+        border: 1px solid $black
+
+    .bar-item
+        border-radius: 0
+        padding: 0.5em 1em
+        margin: 0
+        float: left
+        width: auto
+        display: block
+        &.float-right
+            float: right
+
+    .bar-search
+        display: flex
+        flex-direction: row
+        column-gap: 0.25em
+        padding-top: 0
+        padding-bottom: 0
+
+        .button, button
+            display: flex
+            align-items: center
+            justify-content: center
+
+
+    .dropdown-hover,
+    .dropdown-click
+        position: relative
+        float: left
+
+
+    .dropdown
+        button
+            text-decoration: underline
+
+    .button, button
+        white-space: normal
+        margin-top: 0
+
+        @media screen and (max-width: $mobile)
+            display: block
+            margin-top: 1em
+
+
+.bar-block .bar-item
+    width: 100%
+    display: block
+    padding: 0.5em 1em
+    text-align: left
+    border: none
+    white-space: normal
+    float: none
+    outline: 0
+
+
+.bar-block.center .bar-item
+    text-align: center
+
+
+.bar.three, .button-group.three
+    .bar-item
+        margin-top: 0
+        width: 33.3%
+
+        &:nth-child(2n)
+            border-left: none
+            border-right: none
+
+
+.navbar
+    width: 100%
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+
+    nav
+        justify-content: space-between
+        width: fit-content
+
+        .bar-item
+            justify-content: center
+
+        @media screen and (max-width: 550px)
+            width: 100%
+
+
+    .bar-item
+        padding: 0.5em 1em
+        margin: 0
+        display: flex
+        width: auto
+        justify-content: center
+
+
+    .bar-search
+        display: flex
+        max-width: 100%
+        min-width: 200px
+        flex: none
+        flex-direction: row
+        column-gap: 0.25em
+        padding: 0 0 0 1em
+
+        @media screen and (max-width: 550px)
+            padding: 0 1em 0 1em
+            margin-bottom: 1em
+
+        .button, button
+            width: fit-content
+            margin-top: 0
+            display: flex
+            align-items: center
+            justify-content: center
+
+
+    .dropdown-hover,
+    .dropdown-click
+        position: relative
+        float: left
+
+
+    .dropdown
+        button
+            text-decoration: underline
+
+    .button, button
+        white-space: normal
+        margin-top: 0
+
+        @media screen and (max-width: $mobile)
+            display: block
+            margin-top: 1em
+
+.tab-switcher
+    &:first-child
+        border-top-left-radius: 0.25em !important
+        &:hover
+            border-top-left-radius: 0.25em
+
+    &.tab-switcher-active
+        background-color: $gray-80
+        color: white
+        &:hover
+            color: white
+            background-color: $gray-80
+
+

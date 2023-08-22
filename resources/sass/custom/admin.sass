@@ -1,0 +1,110 @@
+/* ADMIN LAYOUT */
+.admin
+    min-width: 320px
+
+    &.wrapper
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+
+        & > .container
+            flex-grow: 1
+
+
+    .admin-content
+        width: 100%
+        margin: 0.5em auto 0
+        display: grid
+        grid-template-columns: 330px calc(100% - 362px)
+        grid-template-areas: 'sidebar main-content'
+        gap: 2em
+
+        &.admin-nosidebar
+            grid-template-columns: 1fr
+            grid-template-areas: 'main-content'
+
+            @media screen and (max-width: 990px)
+                grid-template-columns: 100%
+                grid-template-areas: "main-content"
+
+        @media screen and (max-width: 990px)
+            grid-template-columns: 100%
+            grid-template-areas: "main-content" "sidebar"
+
+        .roles-permissions-bar
+            background-color: $gray-10
+
+        main
+            border-radius: 0.5em
+            border: 1px solid $gray-20
+            box-sizing: border-box
+            grid-area: main-content
+            background-color: white
+
+            .header
+                border-top-left-radius: 0.5em
+                border-top-right-radius: 0.5em
+                padding: 0.5em 1em
+                background-color: $bg-primary
+                color: white
+
+                h1
+                    margin: 0
+
+        aside
+            border-radius: 0.5em
+            border: 1px solid $gray-20
+            box-sizing: border-box
+            grid-area: sidebar
+            height: fit-content
+            background-color: white
+
+            header
+                border-top-left-radius: 0.5em
+                border-top-right-radius: 0.5em
+                padding: 0.5em 1em
+                background-color: $gray-80
+                color: white
+
+                h3
+                    margin: 0
+
+            div.sidebar-content
+                padding: 0
+
+                .navbar-nav
+                    li
+
+
+                        a.nav-link
+                            padding-left: 1em
+                            padding-top: 0.4em
+                            padding-bottom: 0.4em
+                            border-bottom: 1px solid $gray-10
+                            border-left: 0.5rem solid transparent
+                            display: flex !important
+                            // .active class display block overwrite
+                            align-items: center
+                            column-gap: 0.5em
+
+
+                            &.active
+                                border-left: 0.5rem solid $text
+
+                            &:hover
+                                background-color: #f0f0f0
+
+                            i
+                                text-align: center
+                                width: 18px
+
+                        &:last-child
+                            a
+                                border-bottom: none
+
+/* ADMIN LAYOUT END */
+.main-content
+    overflow-y: hidden
+
+    table
+        overflow-y: scroll

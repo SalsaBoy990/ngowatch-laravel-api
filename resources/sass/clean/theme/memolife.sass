@@ -1,0 +1,94 @@
+@import url('https://fonts.bunny.net/css?family=museomoderno:700|noto-sans:400,400i,500,600,700|roboto:300')
+
+// ----
+// SET THE THEME HERE -->
+// ----
+
+$border: #c5c5c5
+$bg-light: #f7f8f8
+$gray-60: #6C6C6C
+$gray-80: #303134
+$text: #4c5865
+$black: #222
+$primary-dark: #164E63
+$primary-light: #0891B2
+$bg-primary: #164E63
+
+
+//$accent-light: #E6873B
+$accent-light: #e37639
+//$accent-dark: #CD4800
+$accent-dark: #e6873b
+$link: $accent-light
+
+// Dark mode
+$bg-dark: #1f292f
+$bg-content: #444b50
+$primary-darkmode: #ffceac
+$primary-darkmode-hover: #ffebde
+
+$sidenav: #d2d1cd
+//$sidenav-dark: #778588
+$sidenav-dark: #596466
+$sidenav-hover: #647B81
+$sidenav-hover-light: #adb9bb
+$sidenav-active: #445458
+$sidenav-active-light: #8e989a
+
+
+$pale-dark: $accent-dark
+$pale-light: $accent-light
+
+// State colors
+$error-pale: #FFE4E6
+$red-pale: $error-pale
+$error-light: #d32641
+$red: $error-light
+$error-dark: #a40019
+$red-dark: $error-dark
+
+$warning-pale: #ffeedb
+$orange-pale: $warning-pale
+$warning-light: #ffa700
+$warning-dark: #e57910
+
+$success-pale: #d5efda
+$green-pale: $success-pale
+$success-light: #1c882c
+$success-dark: #0e5b1b
+$lime: #84CC16
+
+$info-pale: #cfe9ee
+$cyan-pale: $info-pale
+$info-light: #007fad
+$info-dark: #025370
+
+
+$sans: 'Noto Sans', sans-serif !default
+$serif: 'Noto Sans', serif !default
+$brand: 'MuseoModerno', serif !default
+$roboto: 'Roboto', sans-serif !default
+$mono: monospace
+
+body
+    background: #F4F5F5 !important
+
+
+h1, h2, h3, h4, h5, h6
+    font-weight: 700
+
+.brand
+    font-family: $brand
+    font-weight: 700
+    letter-spacing: 1px
+    color: #eee !important
+    font-size: 18px
+    text-decoration: none
+    &:hover
+        color: white !important
+
+
+@mixin primary-gradient
+    background: $bg-primary
+    background: linear-gradient(0deg, $primary-light 0%, $primary-dark 80%)
+

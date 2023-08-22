@@ -1,0 +1,44 @@
+a
+    color: $link
+    cursor: pointer
+    text-decoration: underline
+    background-color: transparent
+
+    &:hover
+        color: $gray-80
+        outline-width: 0
+
+    &:active
+        outline-width: 0
+
+    &:focus
+        outline-width: 2px
+
+    //&:visited
+    //    color: rebeccapurple
+
+    &.no-underline
+        // needed
+        text-decoration: none !important
+
+    &.nav-link.active
+        font-weight: 700
+        background-color: $gray-20
+
+
+.pointer
+    cursor: pointer
+
+
+.link
+    font-size: 1rem
+    font-weight: 400
+    background-color: transparent
+    border-color: transparent
+    color: $primary-light
+    text-decoration: underline
+
+    &:hover
+        background-color: transparent
+        border-color: transparent
+        color: $primary-dark

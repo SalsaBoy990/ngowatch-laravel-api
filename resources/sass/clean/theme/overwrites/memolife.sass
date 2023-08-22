@@ -1,0 +1,240 @@
+h1
+    line-height: 1.25
+    font-weight: 900
+    font-family: $serif
+
+
+h2, h3, h4, h5, h6
+    line-height: 1.25
+    font-weight: 700
+    font-family: $sans
+
+.post-date
+    font-size: 18px
+    font-weight: 500
+    text-transform: uppercase
+    font-variant: all-small-caps
+    line-height: 150%
+    letter-spacing: 1px
+
+.button, button
+    font-size: 14px
+    font-weight: 500
+    text-transform: uppercase
+
+header.page-header
+    background-color: $primary-dark !important
+    // needed
+
+    .register-button, .logout-button, .darkmode-toggle
+        background-color: transparent
+        border-color: $gray-20
+        color: $gray-20
+        display: inline-block
+        width: auto
+
+        &:hover
+            border-color: white
+            color: white
+
+    .login-button
+        background-color: $gray-20
+        border-color: $gray-20
+        color: $black !important
+        display: inline-block
+        width: auto
+
+        &:hover
+            background-color: white
+            border-color: white
+
+    .header-content
+        .logo
+            position: relative
+        //top: 8px
+
+        #main-menu-offcanvas-toggle
+            color: $gray-20
+            border-color: $gray-20
+
+            &:hover, &:focus
+                color: white
+                border-color: white
+                background-color: transparent
+
+        #event-link-mobile-menu
+            color: white
+            border-color: white
+
+            &:hover, &:focus
+                color: #333
+                border-color: #333
+
+            @media screen and (min-width: 1115px)
+                display: none
+
+
+    .user-dropdown-menu
+        display: inline-block
+        position: relative
+
+        .dropdown-content
+            padding-left: 1em
+            padding-right: 1em
+            padding-top: 0.75em
+            top: 28px
+            min-width: 190px
+            left: -30px
+            text-align: left
+
+        a:not(.dropdown-item)
+            color: white
+            text-decoration: underline
+
+            &.active
+                color: $pale-light
+                font-weight: bold
+
+
+    .main-navigation
+        #main-menu
+            a
+                // font-family: $roboto
+
+                &:not(.dropdown-item)
+                    color: white
+
+                    &.active
+                        color: $pale-light
+                        font-weight: 600
+
+    .right-menu
+        flex-grow: 1
+        text-align: right
+
+        a
+            color: #eeeeee
+
+            &:hover, &:focus
+                color: white
+
+
+.sidenav
+    background-color: $sidenav
+
+    #main-menu
+        a:not(.dropdown-item)
+            color: $primary-dark !important
+            // needed
+            &.active, &:hover, &:focus
+                color: #333 !important
+                // needed
+                //font-weight: 600
+
+.user-dropdown-menu-mobile
+    @media screen and (max-width: 1115px)
+        display: none
+
+.user-dropdown-menu-desktop
+    @media screen and (min-width: 1115px)
+        display: none
+
+
+footer.page-footer.public-footer
+    border-top: 2px solid $gray-80
+    text-align: center
+    background: $primary-dark
+
+    .footer-content
+        nav
+            margin-bottom: 3em
+
+            a
+                padding: 0 0.5em
+
+            a.active
+                display: inline
+                font-weight: bold
+                color: $pale-light
+
+        .logo
+            a
+                justify-content: center
+
+
+.ql-toolbar
+    .ql-formats
+        button
+            margin-top: 0
+
+.ql-editor
+    font-size: 18px
+
+
+.public
+    .hero-container
+        position: relative
+        min-height: 602px
+        width: 100%
+        background-image: url('./../../public/images/hero-bg.png')
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: cover
+
+    .app-details-container
+        display: flex
+        align-items: center
+        position: relative
+        min-height: 925px
+        width: 100%
+        background-image: url('./../../public/images/memolife-travel.png')
+        background-repeat: no-repeat
+        background-position: center center
+        background-size: cover
+
+        .app-details-grid
+            max-width: 1200px
+            margin: 2em auto
+            z-index: 2
+            width: 100%
+            padding: 0 2em
+            display: grid
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
+            column-gap: 1em
+            row-gap: 2em
+
+            .detail-item
+                &.empty
+                    @media screen and (max-width: 734px)
+                        display: none
+
+                p
+                    strong
+                        font-variant-caps: small-caps
+
+
+// PUBLIC PAGE END
+
+
+.dark
+    .public-account
+        .public-account--galleries-grid
+            .card
+                background-color: $bg-content
+
+.public-account
+    margin: 0 auto
+    width: 100%
+
+    .public-account--galleries-grid
+        width: 100%
+        padding: 0
+        display: grid
+        grid-template-columns: 1fr
+        column-gap: 1em
+        row-gap: 2em
+
+        .card
+            background-color: white
+            box-shadow: rgba(50, 50, 93, 0.25) 0 2px 5px -1px, rgba(0, 0, 0, 0.3) 0 1px 3px -1px
+
