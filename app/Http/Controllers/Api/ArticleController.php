@@ -7,24 +7,45 @@ use App\Http\Requests\Api\ArticleStoreRequest;
 use App\Http\Resources\ArticleResource;
 use App\Http\Traits\Helpers\ApiResponseTrait;
 use App\Models\Article;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     use ApiResponseTrait;
 
-    public function index()
+
+    /**
+     * Article resource collection response
+     *
+     * @return JsonResponse
+     */
+    public function index(): JsonResponse
     {
         return $this->respondWithResourceCollection(ArticleResource::collection(Article::all()));
     }
 
-    public function show(Article $article)
+
+    /**
+     * One article resource response
+     *
+     * @param  Article  $article
+     * @return JsonResponse
+     */
+    public function show(Article $article): JsonResponse
     {
         return $this->respondWithResource(new ArticleResource($article));
 
     }
 
-    public function store(ArticleStoreRequest $request)
+
+    /**
+     * Creates article
+     *
+     * @param  ArticleStoreRequest  $request
+     * @return JsonResponse
+     */
+    public function store(ArticleStoreRequest $request): JsonResponse
     {
         $article = Article::create($request->all());
 
@@ -33,14 +54,29 @@ class ArticleController extends Controller
 //        return response()->json($article, 201);
     }
 
-    public function update(Request $request, Article $article)
+
+    /**
+     * Updates article
+     *
+     * @param  Request  $request
+     * @param  Article  $article
+     * @return JsonResponse
+     */
+    public function update(Request $request, Article $article): JsonResponse
     {
         $article->update($request->all());
 
-        return response()->json($article, 200);
+        return $this->respondWithResource(new ArticleResource($article));
     }
 
-    public function delete(Article $article)
+
+    /**
+     * Deletes article
+     *
+     * @param  Article  $article
+     * @return JsonResponse
+     */
+    public function delete(Article $article): JsonResponse
     {
         $article->delete();
 

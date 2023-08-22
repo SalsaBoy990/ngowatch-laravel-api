@@ -6,7 +6,6 @@ namespace App\Models;
 use App\Mail\SendCodeMail;
 use App\Trait\HasRolesAndPermissions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -16,6 +15,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasRolesAndPermissions;
+    use HasApiTokens;
 
     public const RECORDS_PER_PAGE = 10;
 
@@ -83,59 +83,11 @@ class User extends Authenticatable
     }
 
 
-    /**
-     * User has many galleries
-     *
-     * @return HasMany
-     */
-    public function galleries(): HasMany
-    {
-        return $this->hasMany(Gallery::class);
-    }
-
-
-    public function getPaginatedGalleriesAttribute()
-    {
-        return $this->galleries()->paginate(10);
-    }
-
     public function getUserHandleAttribute(): string
     {
         return '@'.$this->handle;
     }
 
-
-    /**
-     * User has many photos
-     *
-     * @return HasMany
-     */
-    public function photos(): HasMany
-    {
-        return $this->hasMany(Photo::class);
-    }
-
-
-    /**
-     * User has many tags
-     *
-     * @return HasMany
-     */
-    public function tags(): HasMany
-    {
-        return $this->hasMany(Tag::class);
-    }
-
-
-    /**
-     * User has many photos
-     *
-     * @return HasMany
-     */
-    public function goals(): HasMany
-    {
-        return $this->hasMany(Goal::class);
-    }
 
     /**
      * @return HasOne

@@ -1,10 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\ArticleController;
-use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,18 +20,29 @@ use Illuminate\Support\Facades\Route;
 // Authenticated API routes
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum', /*'2fa'*/]],
     function () {
-
+        /* Auth */
+        Route::get('user', [AuthController::class, 'user'])->name('api.user');
         Route::post('logout', [LoginController::class, 'logout'])->name('user.logout');
+        /* Auth END */
 
-        Route::get('user', function (Request $request) {
-            return $request->user();
-        })->name('user.me');
 
+        /* Articles */
         Route::get('article', [ArticleController::class, 'index']);
         Route::get('article/{article}', [ArticleController::class, 'show']);
         Route::post('article', [ArticleController::class, 'store']);
         Route::put('article/{article}', [ArticleController::class, 'update']);
         Route::delete('article/{article}', [ArticleController::class, 'delete']);
+        /* Articles END */
     }
 );
+// Authenticated API routes END
+
+
+// Public API routes
+Route::group(['prefix' => 'v1'],
+    function () {
+        Route::post('login', [AuthController::class, 'login'])->name('api.login');
+    }
+);
+// Public API routes END
 
