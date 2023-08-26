@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: Bawa, Lakhveer
+ * User: Bawa, Lakhveer, Modified by András Gulácsi
  * Email: iamdeep.dhaliwal@gmail.com
  * Date: 2020-06-14
  * Time: 12:18 p.m.
@@ -46,6 +46,7 @@ trait ApiResponseTrait
             $headers
         );
     }
+
 
     /**
      * @param  array  $data
@@ -124,6 +125,7 @@ trait ApiResponseTrait
         );
     }
 
+
     /*
      *
      * Just a wrapper to facilitate abstract
@@ -149,12 +151,14 @@ trait ApiResponseTrait
         return $this->apiResponse(
             [
                 'success' => true,
+                'message' => $message ?? 'OK',
                 'result' => $resourceCollection->response()->getData(),
             ],
             $statusCode,
             $headers
         );
     }
+
 
     /**
      * Respond with success.
@@ -165,8 +169,14 @@ trait ApiResponseTrait
      */
     protected function respondSuccess(string $message = 'OK'): JsonResponse
     {
-        return $this->apiResponse(['success' => true, 'message' => $message]);
+        return $this->apiResponse(
+            [
+                'success' => true,
+                'message' => $message
+            ]
+        );
     }
+
 
     /**
      * Respond with created.
@@ -177,12 +187,16 @@ trait ApiResponseTrait
      */
     protected function respondCreated(JsonResource $resource): JsonResponse
     {
-        return $this->apiResponse([
-            'success' => true,
-            'result' => $resource,
-            'message' => 'OK',
-        ], 201);
+        return $this->apiResponse(
+            [
+                'success' => true,
+                'result' => $resource,
+                'message' => 'OK',
+            ],
+            201
+        );
     }
+
 
     /**
      * Respond with deleted.
@@ -191,8 +205,15 @@ trait ApiResponseTrait
      */
     protected function respondDeleted(): JsonResponse
     {
-        return $this->apiResponse(['success' => true, 'message' => 'OK'], 204);
+        return $this->apiResponse(
+            [
+                'success' => true,
+                'message' => 'OK'
+            ],
+            204
+        );
     }
+
 
     /**
      * Respond with no content.
@@ -203,8 +224,15 @@ trait ApiResponseTrait
      */
     protected function respondNoContent(string $message = 'No Content Found'): JsonResponse
     {
-        return $this->apiResponse(['success' => false, 'message' => $message], 200);
+        return $this->apiResponse(
+            [
+                'success' => false,
+                'message' => $message
+            ]
+            , 200
+        );
     }
+
 
     /**
      * Respond with no content.
@@ -215,8 +243,9 @@ trait ApiResponseTrait
      */
     protected function respondNoContentResource(string $message = 'No Content Found'): JsonResponse
     {
-        return $this->respondWithResource(new \Illuminate\Http\Resources\Json\JsonResource([]), $message);
+        return $this->respondWithResource(new JsonResource([]), $message);
     }
+
 
     /**
      * Respond with no content.
@@ -230,6 +259,7 @@ trait ApiResponseTrait
         return $this->respondWithResourceCollection(new ResourceCollection([]), $message);
     }
 
+
     /**
      * Respond with unauthorized.
      *
@@ -242,6 +272,7 @@ trait ApiResponseTrait
         return $this->respondError($message, 401);
     }
 
+
     /**
      * Respond with error.
      *
@@ -249,12 +280,16 @@ trait ApiResponseTrait
      * @param  int  $statusCode
      *
      * @param  Exception|null  $exception
-     * @param  bool|null  $error_code
+     * @param  int  $error_code
      *
      * @return JsonResponse
      */
-    protected function respondError($message, int $statusCode = 400, Exception $exception = null, int $error_code = 1)
-    {
+    protected function respondError(
+        $message,
+        int $statusCode = 400,
+        Exception $exception = null,
+        int $error_code = 1
+    ): JsonResponse {
 
         return $this->apiResponse(
             [
