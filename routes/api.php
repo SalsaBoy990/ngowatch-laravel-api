@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\ArticleController;
-use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\VerificationController;
+use App\Http\Controllers\Api\Auth\ForgotPasswordController;
+use App\Http\Controllers\Api\Auth\LoginController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\Auth\VerificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,8 +24,8 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum', 'verified'/*'2fa'*/]],
     function () {
         /* Auth */
-        Route::get('user', [AuthController::class, 'user'])->name('auth.user');
-        Route::post('logout', [AuthController::class, 'logout'])->name('auth.logout');
+        Route::get('user', [LoginController::class, 'user'])->name('auth.user');
+        Route::post('logout', [LoginController::class, 'logout'])->name('auth.logout');
         /* Auth END */
 
 
@@ -46,10 +49,14 @@ Route::group(['prefix' => 'v1', 'middleware' => ['auth:sanctum']], function() {
 // Public API routes
 Route::group(['prefix' => 'v1'],
     function () {
-        Route::post('login', [AuthController::class, 'login'])->name('auth.login');
-        Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+        Route::post('login', [LoginController::class, 'login'])->name('auth.login');
+        Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
 
         Route::get('email/verify/{id}', [VerificationController::class, 'verify'])->name('verification.verify');
+
+        Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+        Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+        Route::get('password/reset', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 
     }
 );
